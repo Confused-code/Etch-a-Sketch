@@ -1,12 +1,14 @@
 "use strict"
 
 const sketchBoard = document.querySelector(".sketchBoard");
+const resetGenerateButton = document.querySelector('.resetGenerateButton');
 
 sketchBoard.addEventListener('mouseover', colorSketchUnit);
+resetGenerateButton.addEventListener('click', getSketchUnitRows);
 
-createBoard(16);
+createBoard();
 
-function createBoard(n) {
+function createBoard(n=16) {
     const numberOFsketchUnits = n*n;
     sketchBoard.style.maxWidth = `${n*16}px`
 
@@ -16,6 +18,17 @@ function createBoard(n) {
 
         sketchBoard.appendChild(sketchUnit);
     }
+}
+
+function emptyBoard() {
+    // sketchBoard.innerHTML = '';
+    sketchBoard.textContent = '';
+}
+
+function getSketchUnitRows() {
+    const output = prompt("give number of units for Sketch Board");
+    emptyBoard();
+    createBoard(output);
 }
 
 function colorSketchUnit(e) {
