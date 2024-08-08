@@ -4,14 +4,16 @@ const sketchBoard = document.querySelector(".sketchBoard");
 const resetGenerateButton = document.querySelector('.resetGenerateButton');
 const colorButton = document.querySelector('.randomColorButton');
 const blackColorButton = document.querySelector('.blackColorButton');
-const clearBoard = document.querySelector('clearBoard');
+const clearBoard = document.querySelector('.clearBoard');
 
 let toColor = false;
+let numberOfSketchUnitesPerRow = 16;
 
 // sketchBoard.addEventListener('mouseover', colorSketchUnit);
 resetGenerateButton.addEventListener('click', getSketchUnitRows);
 colorButton.addEventListener('click', () => toColor=true);
 blackColorButton.addEventListener('click', ()=>toColor=false);
+clearBoard.addEventListener('click', clearSketchUnits);
 
 createBoard();
 
@@ -40,6 +42,7 @@ function emptyBoard() {
 function getSketchUnitRows() {
     const output = prompt("give number of units for Sketch Board");
     emptyBoard();
+    numberOfSketchUnitesPerRow = output;
     createBoard(output);
 }
 
@@ -76,4 +79,12 @@ function colorSketchUnit(e) {
 function isFilled(e) {
     if (e.target.style.opacity === "") return false;
     else return true;
+}
+
+function clearSketchUnits() {
+    const sketchUnits = document.querySelectorAll('.sketchUnit');
+    sketchUnits.forEach((unit)=>{
+        unit.style.backgroundColor = 'white';
+        unit.style.opacity = '';
+    });
 }

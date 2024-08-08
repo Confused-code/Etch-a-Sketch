@@ -1,6 +1,8 @@
 body {
     background : rgb(2, 21, 38);
     color: #6EACDA;
+    font-size: 1.2em;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 div {
@@ -10,9 +12,13 @@ div {
 }
 
 button {
-    padding: 5px;
-    border-radius: 10px;
-    font-size: 1.2em;;
+    padding: 8px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    border: 0;
+    color: rgb(2, 21, 38);
+    background-color: #6EACDA;
+    font-weight: 700;
 }
 
 .container {
@@ -44,6 +50,13 @@ button {
 
 .sketchUnit {
     background: white;
+}
+
+.colorMenu {
+    display: flex;
+    width: 512px;
+    gap: 16px;
+    justify-content: center;
 }
 
 .colorItBlack {
