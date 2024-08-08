@@ -10,11 +10,13 @@ createBoard();
 
 function createBoard(n=16) {
     const numberOFsketchUnits = n*n;
-    sketchBoard.style.maxWidth = `${n*16}px`
+    const sketchUnitSize = 512/n;
 
     for(let i=0; i<numberOFsketchUnits; i++) {
         const sketchUnit = document.createElement("div");
         sketchUnit.classList.add("sketchUnit");
+        sketchUnit.style.width = `${sketchUnitSize}px`;
+        sketchUnit.style.height = `${sketchUnitSize}px`;
 
         sketchBoard.appendChild(sketchUnit);
     }

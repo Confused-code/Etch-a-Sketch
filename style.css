@@ -1,5 +1,6 @@
 body {
     background : rgb(2, 21, 38);
+    color: #6EACDA;
 }
 
 div {
@@ -8,16 +9,39 @@ div {
     padding: 0;
 }
 
+button {
+    border-radius: 10px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+.rowSelectMenu {
+    display: flex;
+    justify-content: space-between;
+
+    width: 512px;
+}
+
 .sketchBoard {
     display: flex;
     flex-flow: row wrap;
+
+    box-sizing: content-box;
+
+    width: 512px;
+    height: 512px;
+    border: 2px solid rgb(3, 52, 110);
 }
 
 .sketchUnit {
-    width: 16px;
-    height: 16px;
     background: white;
-    border: .005px solid #6EACDA;
+    /* border: .005px solid #6EACDA; */
 }
 
 .colorIt {
