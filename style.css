@@ -10,7 +10,9 @@ div {
 }
 
 button {
+    padding: 5px;
     border-radius: 10px;
+    font-size: 1.2em;;
 }
 
 .container {
@@ -24,6 +26,7 @@ button {
 .rowSelectMenu {
     display: flex;
     justify-content: space-between;
+    align-items: center;;
 
     width: 512px;
 }
@@ -44,6 +47,6 @@ button {
     /* border: .005px solid #6EACDA; */
 }
 
-.colorIt {
+.colorItBlack {
     background: #6EACDA;
 }
