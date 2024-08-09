@@ -7,6 +7,7 @@ const blackColorButton = document.querySelector('.blackColorButton');
 const clearBoard = document.querySelector('.clearBoard');
 
 let toColor = false;
+let mousedown = false;
 let numberOfSketchUnitesPerRow = 16;
 
 // sketchBoard.addEventListener('mouseover', colorSketchUnit);
@@ -28,7 +29,13 @@ function createBoard(n=16) {
         sketchUnit.style.width = `${sketchUnitSize}px`;
         sketchUnit.style.height = `${sketchUnitSize}px`;
 
+        sketchUnit.addEventListener('mousedown', (e)=> {
+            e.preventDefault();
+            mousedown=true;
+            colorSketchUnit(e);
+        });
         sketchUnit.addEventListener('mouseover', colorSketchUnit)
+        addEventListener('mouseup', () => mousedown=false)
 
         sketchBoard.appendChild(sketchUnit);
     }
@@ -47,31 +54,33 @@ function getSketchUnitRows() {
 }
 
 function colorSketchUnit(e) {
-    if(!toColor) {
-        const targetUnit = e.target;
-        if(targetUnit.style.backgroundColor == "" ||
-            targetUnit.style.backgroundColor !== 'rgb(110, 172, 218)'
-        ) {
-            targetUnit.style.backgroundColor = "#6EACDA";
-            e.target.style.opacity = "0.1";
-        } else {
-            if(isFilled(e)) {
-                if(+(e.target.style.opacity<1))
-                    e.target.style.opacity = `${+(e.target.style.opacity) + 0.1}`;
+    if(mousedown) {
+        if(!toColor) {
+            const targetUnit = e.target;
+            if(targetUnit.style.backgroundColor == "" ||
+                targetUnit.style.backgroundColor !== 'rgb(110, 172, 218)'
+            ) {
+                targetUnit.style.backgroundColor = "#6EACDA";
+                e.target.style.opacity = "0.1";
+            } else {
+                if(isFilled(e)) {
+                    if(+(e.target.style.opacity<1))
+                        e.target.style.opacity = `${+(e.target.style.opacity) + 0.1}`;
+                }
             }
         }
-    }
-    else {
-        if(e.target.style.backgroundColor == "rgb(110, 172, 218)" || 
-            e.target.style.backgroundColor == ''
-        ) {
-            let color = Math.floor(Math.random()*361);
-            e.target.style.backgroundColor = "hsl("+color+" 100%, 50%)";
-            e.target.style.opacity = "0.1";
-        }
         else {
-            if(+(e.target.style.opacity<1))
+                if(e.target.style.backgroundColor == "rgb(110, 172, 218)" || 
+                e.target.style.backgroundColor == ''
+            ) {
+                let color = Math.floor(Math.random()*361);
+                e.target.style.backgroundColor = "hsl("+color+" 100%, 50%)";
+                e.target.style.opacity = "0.1";
+            }
+            else {
+                if(+(e.target.style.opacity<1))
                 e.target.style.opacity = `${+(e.target.style.opacity) + 0.1}`;
+            }
         }
     }
 }
