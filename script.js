@@ -47,7 +47,8 @@ function emptyBoard() {
 }
 
 function getSketchUnitRows() {
-    const output = prompt("give number of units for Sketch Board");
+    const output = prompt("give number of units for Sketch Board between 1 and 100");
+    if(+output>99 || +output<2 || output==='') return getSketchUnitRows();
     emptyBoard();
     numberOfSketchUnitesPerRow = output;
     createBoard(output);
